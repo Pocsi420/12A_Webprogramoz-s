@@ -1,43 +1,53 @@
 # A feladat
 
-Készíts egy egyszerű játékosnév-kártyát! A HTML-váz és a CSS nagy része készen van. Egészítsd ki az elrendezést, majd írd meg a működéshez szükséges JavaScriptet!
+Készíts üzenetszámlálót! A felhasználó beír egy rövid üzenetet, és az alatta lévő számláló folyamatosan jelzi, hány karaktert írt be.
 
-A HTML-t nem kell módosítanod. A script.js fájlban csak egy kezdő megjegyzés található.
+A HTML-váz és a CSS nagy része készen van. A HTML-t nem kell módosítanod. A style.css megjelölt részeit egészítsd ki, a JavaScriptet a script.js fájlba írd!
 
 ## 1. CSS-formázás
 
-A style.css fájlban a megjelölt helyeken dolgozz!
+1. A body elemen flex elrendezéssel igazítsd a fehér fő dobozt vízszintesen és függőlegesen középre!
+2. A .container gyermekelemei egymás alatt helyezkedjenek el flex elrendezéssel, 20px térközzel!
+3. A .fejlec borítékjele és címe egymás mellett jelenjen meg flex elrendezéssel, függőlegesen középre igazítva, 12px térközzel!
+4. A .szerkeszto címkéje és szövegmezője egymás alatt legyen flex elrendezéssel, 10px térközzel!
+5. Az .info két felirata flex elrendezésben a sor két szélére kerüljön: balra a „Legfeljebb 100 karakter”, jobbra a számláló! Függőlegesen igazítsd őket középre!
+6. A fehér fő doboz sarkait kerekítsd 16px-esre!
+7. A .szamlalo szövege legyen félkövér!
 
-1. A body elemen flex elrendezéssel igazítsd a fő dobozt vízszintesen és függőlegesen középre!
-2. A .container gyermekelemei flex elrendezésben, egymás alatt helyezkedjenek el, közöttük 20px térközzel!
-3. A .beallitasok elemen belül a címke, a beviteli mező és a gomb egymás alatt jelenjen meg flex elrendezéssel, 10px térközzel!
-4. A .kartya belsejében a csillag és a szöveges doboz egymás mellett legyen. Flex elrendezéssel igazítsd őket függőlegesen középre, és legyen közöttük 16px térköz!
-5. A .container sarkait kerekítsd 16px-esre!
-6. A gomb felett az egérkurzor mutató kéz legyen!
-
-Az elvárt kép: középen egy fehér doboz, benne felül a cím és a rövid leírás, alattuk a címke, a beviteli mező és a gomb. Legalul világos lila kártya látható, bal oldalon csillaggal, jobb oldalon a JÁTÉKOS felirattal és a játékos nevével.
+Az elvárt kép: világos barackszínű háttéren, középen fehér doboz. Felül egymás mellett borítékjel és cím, alattuk a rövid leírás, majd a címke és a szövegmező. A doboz alján bal oldalon a korlátról szóló felirat, jobb oldalon barackszínű számláló látható.
 
 ## 2. JavaScript
 
-1. Hivatkozz a beviteli mezőre, a gombra és a játékos nevét megjelenítő elemre!
-2. Írj egy saját, névvel ellátott függvényt, amely kiolvassa a beviteli mező aktuális értékét, és megjeleníti azt a kártyán a Vendég szöveg helyén!
-3. Rendeld a függvényt a gomb click eseményéhez addEventListener segítségével!
-4. A név csak a gomb megnyomásakor változzon meg. Gépelés közben még a korábbi név maradjon a kártyán!
-5. Újabb név beírása és újabb kattintás után az új név jelenjen meg ugyanazon a helyen!
+1. Hivatkozz a szövegmezőre és a karakterek számát megjelenítő span elemre!
+2. Írj egy saját, névvel ellátott függvényt! Olvasd ki benne a szövegmező aktuális tartalmának hosszát, majd jelenítsd meg a számlálóban!
+3. Rendeld a függvényt a szövegmező input eseményéhez, addEventListener segítségével!
+4. A számláló gépeléskor és törléskor is frissüljön! Beillesztett szöveggel is működjön.
+5. Csak a span elemben lévő számot módosítsd! A mögötte szereplő „/ 100” maradjon változatlan.
 
-Segítség: querySelector, addEventListener, value, textContent.
-A függvényt az eseménykezelőhöz a nevével rendeld hozzá.
+Segítség:
 
-Az alapfeladatban feltételezheted, hogy a felhasználó beír egy nevet; üres mezőt nem kell ellenőrizned.
+- Az elemek kiválasztásához használhatod a querySelector metódust.
+- A szövegmező tartalmát a value tulajdonsággal olvashatod ki.
+- Egy szöveg hosszát a length tulajdonság adja meg. Például: "Szia".length értéke 4.
+- Az eredményt a textContent tulajdonsággal jelenítheted meg.
+- Az input esemény a szövegmező felhasználó általi módosításakor fut le.
+- Az addEventListener számára a saját függvényed nevét add meg!
+
+A HTML-ben megadott maxlength="100" már korlátozza a beírható szöveg hosszát. Ezt nem kell JavaScriptben megoldanod. Kezdetben üres a mező és 0 a számláló, ezért induláskor külön frissítés sem szükséges.
+
+A szóközök is beleszámítanak a hosszba. A teszteléshez egyszerű betűket, számokat és írásjeleket használj.
 
 ## 3. Ellenőrizd a működést!
 
-- Megnyitás után a kártyán Vendég látható.
-- Írd be: PixelPanda! Kattintás előtt továbbra is Vendég látható.
-- Kattints a Megjelenítés gombra! A kártyán PixelPanda jelenjen meg.
-- Írd át a mezőt: KodMester! Kattintás előtt maradjon PixelPanda.
-- Kattints újra! A korábbi név helyén KodMester jelenjen meg.
+- Megnyitás után a számláló értéke: 0 / 100.
+- Írd be a `Szia` szót! Ekkor 4 / 100 jelenjen meg.
+- Tegyél utána egy szóközt! Az érték legyen 5 / 100.
+- Írd utána az `Anna` nevet! Az eredmény legyen 9 / 100. (A mező tartalma: `Szia Anna`.)
+- Töröld ki az egész szöveget! Újra 0 / 100 jelenjen meg.
+- Illeszd be a `Hello!` szöveget! A számláló 6 / 100 értéket mutasson.
 
 ## Opcionális pluszfeladat
 
-Ha a mező teljesen üres, kattintásra a Vendég név jelenjen meg! Ehhez a saját függvényedben használj elágazást.
+A számláló a beírt karakterek helyett a még beírható karakterek számát mutassa! Ehhez vond ki a szöveg hosszát 100-ból!
+
+Ennél a pluszfeladatnál a HTML-ben is módosíthatod a számlálót: a „/ 100” helyett „karakter maradt” szerepeljen, a span kezdeti értéke pedig 100 legyen.
